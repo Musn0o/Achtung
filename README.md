@@ -1,39 +1,56 @@
 # Achtung
 
-Achtung is an Android application designed for improving German pronunciation using Text-to-Speech (TTS) technology. The app allows users to enter German text, select their preferred German voice (from those available on their device), and adjust the speech rate to practice and perfect pronunciation. 
-
-Future versions will offer translation capabilities to and from German, leveraging state-of-the-art language models.
+Achtung is an Android application for improving German pronunciation and translation. It leverages Text-to-Speech (TTS) and on-device machine learning to provide a seamless learning experience.
 
 ---
 
 ## Features
-- Enter any German text to hear correct pronunciation using Android's TTS engine
-- Select from available German voices on your device
-- Adjust speech rate for customized pronunciation practice
-- Simple, intuitive interface built with Jetpack Compose and Material Design 3
-- Error handling for missing language data or voices
+
+- **Text-to-Speech (TTS)**: Enter German text to hear it pronounced correctly.
+- **Voice Selection**: Choose from a list of available German voices on your device.
+- **Speech Rate Control**: Adjust the speed of the pronunciation to better understand the nuances of the language.
+- **Translation**: Translate German text to English using on-device machine learning.
+- **Modern UI**: A clean and intuitive user interface built with Jetpack Compose and Material Design 3.
 
 ---
 
-## How It Works
-- Enter your German sentence in the provided text field
-- Choose a preferred voice (if multiple are available)
-- Adjust the speech rate slider
-- Tap "Speak" to hear the pronunciation
+## Architecture
+
+The application follows the MVVM (Model-View-ViewModel) architecture pattern, which separates the UI from the business logic.
+
+- **View**: The UI is built with Jetpack Compose and is located in `MainActivity.kt`. It observes the state of the `TranslatorViewModel` and displays the UI accordingly.
+- **ViewModel**: The `TranslatorViewModel.kt` is responsible for holding and managing the UI-related data. It exposes the state of the UI and the translation results to the View.
+- **Model**: The `MlKitTranslator.kt` is responsible for the translation logic. It uses Google's ML Kit to translate German text to English.
 
 ---
 
-## Planned Features
-- In-app translation of sentences or words (to and from German), powered by a fine-tuned language model
+## Project Structure
+
+```
+/app/src/main/java/com/musno/achtung/
+├── MainActivity.kt         # Main activity, contains the Jetpack Compose UI
+├── MlKitTranslator.kt      # Handles translation using ML Kit
+├── TranslatorViewModel.kt  # ViewModel for the translator screen
+└── ui/
+    └── theme/              # Jetpack Compose theme files
+```
 
 ---
 
-## Screenshots
-<!-- Add your screenshots here -->
+## Technology Stack
+
+- **Kotlin**: The primary programming language for the application.
+- **Jetpack Compose**: For building the user interface.
+- **Material Design 3**: For the UI design.
+- **Google ML Kit**: For on-device translation.
+- **Android Text-to-Speech (TTS)**: For pronouncing the German text.
+- **Kotlin Coroutines**: For asynchronous programming.
+- **StateFlow**: For managing the state of the UI.
 
 ---
 
 ## Getting Started
+
 1. Clone this repository:
    ```shell
    git clone https://github.com/Musn0o/Achtung.git
@@ -44,9 +61,5 @@ Future versions will offer translation capabilities to and from German, leveragi
 ---
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you'd like to change or add.
-
----
-
-## License
-This project is open source. See the [LICENSE](LICENSE) file for details.
